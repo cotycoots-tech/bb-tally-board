@@ -2,24 +2,64 @@
 
 Mobile-first web app for field crews to log human interventions on automated railway tie-plate systems.
 
+**Repo:** https://github.com/cotycoots-tech/bb-tally-board
+
 ## Features
 
-- **Daily tally entry** for three categories: Robotic System, Tie Plate Setter, Truck Malfunction
+- **Daily tally entry** — Robotic System, Tie Plate Setter, Truck Malfunction
 - **Reason picker** (bottom sheet) with icons + persistent custom reasons
-- **Unit selector**: Raiv-T1 / T-53, Raiv-T2 / T-57, Raiv-T3 / T-51
-- **History log** with search and delete
-- **Analytics dashboard** with date ranges, KPIs, trends, top reasons
-- **Export to Excel** (Daily Summary + Reasons Log sheets)
+- **Unit selector** — Raiv-T1 / T-53, Raiv-T2 / T-57, Raiv-T3 / T-51
+- **History** with search, delete, Excel export
+- **Analytics dashboard** — date ranges, KPIs, trends, top reasons
 - **Print report** for paper records
-- Works offline after first load (data stored in browser localStorage)
+- Offline-capable (data in browser `localStorage`)
 
-## Live demo
+## Important: full app file
 
-After deploy, your Render / GitHub Pages URL will go here.
+The complete `index.html` (~108 KB) needs to be on the repo root for the live site to work.
 
-## Local use
+### Upload the full app (one-time)
 
-Open `index.html` in any modern browser, or serve with:
+1. Download the full `index.html` from your project folder (`artifacts/tallyboard/index.html`).
+2. On GitHub: open this repo → **Add file** → **Upload files**
+3. Drop `index.html` (replace the placeholder) and commit to `main`.
+
+Or from a machine with git:
+
+```bash
+git clone https://github.com/cotycoots-tech/bb-tally-board.git
+cd bb-tally-board
+# copy your full index.html into this folder (overwrite the placeholder)
+git add index.html
+git commit -m "Add full Tally Board app"
+git push
+```
+
+## Deploy to Render (recommended)
+
+1. Go to [dashboard.render.com](https://dashboard.render.com) → **New** → **Static Site**
+2. Connect the GitHub account and select **bb-tally-board**
+3. Settings:
+   - **Name:** `bb-tally-board` (or any name)
+   - **Branch:** `main`
+   - **Build Command:** *(leave empty)*
+   - **Publish Directory:** `.`
+4. Click **Create Static Site**
+
+Render will give you a URL like `https://bb-tally-board.onrender.com`.
+
+You can also use **Blueprint** with the included `render.yaml`.
+
+## Deploy to GitHub Pages
+
+1. Repo **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch: `main` / folder: `/ (root)`
+4. Save
+
+Site URL: `https://cotycoots-tech.github.io/bb-tally-board/`
+
+## Local testing
 
 ```bash
 npx serve .
@@ -27,33 +67,18 @@ npx serve .
 python3 -m http.server 8080
 ```
 
-## Deploy to Render (Static Site)
+Open the URL on your phone to test the mobile UI.
 
-1. Push this repo to GitHub
-2. In [Render](https://dashboard.render.com) → **New → Static Site**
-3. Connect the repo
-4. Settings:
-   - **Build Command**: leave empty
-   - **Publish Directory**: `.` (root)
-5. Deploy
+## Data & backup
 
-Or use the included `render.yaml` with **Blueprint**.
-
-## Deploy to GitHub Pages
-
-1. Repo Settings → Pages
-2. Source: Deploy from a branch → `main` / root
-3. Save — site will be at `https://cotycoots-tech.github.io/bb-tally-board/`
-
-## Data
-
-All data stays in the browser (`localStorage`). Export to Excel or JSON for backup / sharing across devices.
+- All tallies stay in the device browser (`localStorage`)
+- Use **History → Export to Excel** for a spreadsheet (Daily Summary + Reasons Log)
+- Use **Export JSON** for a full backup you can import on another device
 
 ## Tech
 
-- Single-page HTML/JS/CSS
-- Tailwind CSS (CDN)
-- Chart.js, SheetJS, Font Awesome (CDN)
+- Single-file HTML/JS app
+- Tailwind CSS, Chart.js, SheetJS, Font Awesome (CDN)
 
 ## License
 
