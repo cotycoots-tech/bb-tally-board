@@ -7,3 +7,5 @@ node_modules/
 *.local
 .env
 .env.*
+data/tallies.json
+data/*.tmp
